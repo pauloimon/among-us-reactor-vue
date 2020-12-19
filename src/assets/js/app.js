@@ -1,8 +1,10 @@
 import Vue from 'vue'
+import Reactor from './components/reactor'
 
 const app = new Vue({
     el: '#app',
-    data: {
-        message: 'Hello World!',
+
+    components: {
+        Reactor,
     },
 })
