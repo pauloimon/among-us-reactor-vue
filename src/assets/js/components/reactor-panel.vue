@@ -1,35 +1,16 @@
-<template>
-    <div class="reactor-panel">
-        <div class="leds-wrapper">
-            <div class="led on"></div>
-            <div class="led"></div>
-            <div class="led"></div>
-            <div class="led"></div>
-            <div class="led"></div>
-        </div>
-
-        <div v-if="hasScreen" class="screen"></div>
-
-        <div class="buttons-wrapper">
-            <button type="button" class="blinking"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-            <button type="button"></button>
-        </div>
-    </div>
-</template>
-
 <script>
     export default {
         name: 'ReactorPanel',
 
         props: {
-            hasScreen: Boolean,
+            score: Number,
+        },
+
+        data() {
+            return {
+                leds: [1, 2, 3, 4, 5],
+                buttons: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            }
         },
     }
 </script>

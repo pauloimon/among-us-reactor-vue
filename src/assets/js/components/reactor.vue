@@ -1,18 +1,26 @@
 <template>
     <div class="reactor">
-        <reactor-panel :has-screen="true"></reactor-panel>
-        <reactor-panel></reactor-panel>
+        <reactor-computer-panel :score="score"></reactor-computer-panel>
+        <reactor-user-panel :score="score"></reactor-user-panel>
     </div>
 </template>
 
 <script>
-    import ReactorPanel from './reactor-panel'
+    import ReactorComputerPanel from './reactor-computer-panel'
+    import ReactorUserPanel from './reactor-user-panel'
 
     export default {
         name: 'Reactor',
 
         components: {
-            ReactorPanel,
+            ReactorComputerPanel,
+            ReactorUserPanel,
+        },
+
+        data() {
+            return {
+                score: 0,
+            }
         },
     }
 </script>
