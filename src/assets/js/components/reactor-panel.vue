@@ -3,14 +3,44 @@
         name: 'ReactorPanel',
 
         props: {
-            score: Number,
+            level: Number,
+            reactorStatus: String,
         },
 
         data() {
             return {
-                leds: [1, 2, 3, 4, 5],
-                buttons: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                leds: [],
+                buttons: [],
+                combination: [],
             }
+        },
+
+        created() {
+            this.createLeds()
+            this.createButtons()
+        },
+
+        methods: {
+            createLeds() {
+                for (let i = 1; i < 6; i++) {
+                    this.leds.push(i)
+                }
+            },
+
+            createButtons() {
+                for (let i = 1; i < 10; i++) {
+                    this.buttons.push({
+                        number: i,
+                        isBlinking: false,
+                    })
+                }
+            },
+
+            animateButton(button) {
+                button.isBlinking = true
+
+                setTimeout(_ => button.isBlinking = false, 200)
+            },
         },
     }
 </script>
@@ -50,6 +80,13 @@
             background-color: #000;
         }
 
+        .block {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            cursor: not-allowed;
+        }
+
         .buttons-wrapper {
             display: flex;
             justify-content: space-between;
@@ -68,6 +105,14 @@
                 &.blinking {
                     background-color: #09f;
                     z-index: 1;
+                }
+
+                &.on {
+                    background-color: #3f0;
+                }
+
+                &.error {
+                    background-color: #f00;
                 }
             }
         }
